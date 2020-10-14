@@ -34,6 +34,6 @@ public class MainRouteBuilder extends RouteBuilder {
                     .when(header(WebsocketConstants.ERROR_TYPE).isEqualTo(WebsocketConstants.MESSAGE_NOT_SENT_ERROR_TYPE))
                         .process(websocketNotDeliveredMessageProcessor)
                     .otherwise()
-                        .process(websocketMessageProcessor).to("seda:messages");
+                        .process(websocketMessageProcessor).to("atmosphere-websocket:///chat?sendToAll=true");
     }
 }
